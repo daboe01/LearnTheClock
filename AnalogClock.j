@@ -26,7 +26,7 @@
 
 - (id)initWithClockView:(ClockView)aClockView andImageNamed: (CPString) someName
 {	self = [super init];
-	
+
 	if (self)
 	{	_clockView = aClockView;
 		_image=[[ClockView class] _loadImageNamed: someName forDelegate: self];
@@ -56,18 +56,18 @@
 
 - (void)setRotationRadians:(float)radians
 {	if (_rotationRadians == radians) return;
-		
+
 	_rotationRadians = radians;
-		
+
 	[self setAffineTransform:CGAffineTransformScale(
 		CGAffineTransformMakeRotation(_rotationRadians), _scale, _scale)];
 }
 
 - (void)setScale:(float)aScale
 {	if (_scale == aScale) return;
-	
+
 	_scale = aScale;
-	
+
 	[self setAffineTransform: CGAffineTransformScale(CGAffineTransformMakeRotation(_rotationRadians), _scale, _scale)];
 }
 
@@ -91,7 +91,7 @@
 -(void) sizeToFit {}
 
 +(CPString) themeName
-{	return "crystal";
+{	return "crystaldigits";
 }
 
 

@@ -3,56 +3,68 @@
 <gsmarkup>
 
 <objects>
-  <window bridge="YES" id="window">
+  <window bridge="YES" id="window" visible="NO">
 				<vbox>
-					<tabView type="topBezel" width="150" height="150" halign="center" valign="center">
-						<tabViewItem title="Zeigeruhr">
-							<clockView id="clockview1" halign="center" valign="center"/>
+					<tabView type="topBezel" width="400" height="600" halign="center" valign="center">
+					<tabViewItem title="Zahlenuhr">
+              <vbox>
+                <vspace height="10" valign="min"/>
+				  <textField width="220" selectable="NO" height="50" halign="center" id="digitalclocklabel" valueBinding="clockview1.objectValue"/>
+                  <clockView id="clockview2" halign="center" width="128" height="128" valign="center"/>
+                  <hbox> <label>Stunden: </label><slider min="0" max="23" valueBinding="#CPOwner.hours"/></hbox>
+                  <hbox> <label>Minuten: </label><slider min="0" max="59" valueBinding="#CPOwner.minutes"/></hbox>
+                  <textField width="220" height="50" halign="center" id="digitalclocklabel_current" hidden="YES"/>
+                  <button title="Einloggen" target="#CPOwner" action="antwortPruefen2:"/>
+              </vbox>
 						</tabViewItem>
-						<tabViewItem title="Zahlenuhr">
-							<textField width="60" halign="center" id="digitalclocklabel" valueBinding="clockview1.objectValue"/>
-						</tabViewItem>
+            <tabViewItem title="Zeigeruhr">
+              <vbox>
+                <clockView id="clockview1" halign="center" width="128" height="128" valign="center"/>
+                <hbox>
+                  <popUpButton id="pop1" width="200">
+                    <popUpButtonItem title="Punkt" tag="0"/>
+                    <popUpButtonItem title="Viertel vor" tag="45"/>
+                    <popUpButtonItem title="Viertel nach" tag="15"/>
+                    <popUpButtonItem title="Halb" tag="30"/>
+                    <popUpButtonItem title="Fuenf Minuten vor" tag="55"/>
+                    <popUpButtonItem title="Fuenf Minuten nach" tag="5"/>
+                    <popUpButtonItem title="Fuenf Minuten nach halb" tag="35"/>
+                    <popUpButtonItem title="Fuenf Minuten vor halb" tag="25"/>
+                    <popUpButtonItem title="Zehn Minuten vor" tag="50"/>
+                    <popUpButtonItem title="Zehn Minuten nach" tag="10"/>
+                    <popUpButtonItem title="Zwanzig Minuten nach" tag="20"/>
+                    <popUpButtonItem title="Zwanzig Minuten vor" tag="40"/>
+                  </popUpButton>
+                  <popUpButton id="pop2" width="100">
+                    <popUpButtonItem title="Eins" tag="1"/>
+                    <popUpButtonItem title="Zwei" tag="2"/>
+                    <popUpButtonItem title="Drei" tag="3"/>
+                    <popUpButtonItem title="Vier" tag="4"/>
+                    <popUpButtonItem title="Fuenf" tag="5"/>
+                    <popUpButtonItem title="Sechs" tag="6"/>
+                    <popUpButtonItem title="Sieben" tag="7"/>
+                    <popUpButtonItem title="Acht"  tag="8"/>
+                    <popUpButtonItem title="Neun" tag="9"/>
+                    <popUpButtonItem title="Zehn" tag="10"/>
+                    <popUpButtonItem title="Elf" tag="11"/>
+                    <popUpButtonItem title="Zwoelf" tag="12"/>
+                  </popUpButton>
+                  <button title="Einloggen" target="#CPOwner" action="antwortPruefen1:"/>
+                </hbox>
+              </vbox>
+            </tabViewItem>
 					</tabView>
-					<hbox>
-						<popUpButton id="pop1" width="200">
-							<popUpButtonItem title="Punkt" tag="0"/>
-							<popUpButtonItem title="Viertel vor" tag="45"/>
-							<popUpButtonItem title="Viertel nach" tag="15"/>
-							<popUpButtonItem title="Halb" tag="30"/>
-							<popUpButtonItem title="Fuenf Minuten vor" tag="55"/>
-							<popUpButtonItem title="Fuenf Minuten nach" tag="5"/>
-							<popUpButtonItem title="Fuenf Minuten nach halb" tag="35"/>
-							<popUpButtonItem title="Fuenf Minuten vor halb" tag="25"/>
-							<popUpButtonItem title="Zehn Minuten vor" tag="50"/>
-							<popUpButtonItem title="Zehn Minuten nach" tag="10"/>
-							<popUpButtonItem title="Zwanzig Minuten nach" tag="20"/>
-							<popUpButtonItem title="Zwanzig Minuten vor" tag="40"/>
-						</popUpButton>
-						<popUpButton id="pop2" width="100">
-							<popUpButtonItem title="Eins" tag="1"/>
-							<popUpButtonItem title="Zwei" tag="2"/>
-							<popUpButtonItem title="Drei" tag="3"/>
-							<popUpButtonItem title="Vier" tag="4"/>
-							<popUpButtonItem title="Fuenf" tag="5"/>
-							<popUpButtonItem title="Sechs" tag="6"/>
-							<popUpButtonItem title="Sieben" tag="7"/>
-							<popUpButtonItem title="Acht"  tag="8"/>
-							<popUpButtonItem title="Neun" tag="9"/>
-							<popUpButtonItem title="Zehn" tag="10"/>
-							<popUpButtonItem title="Elf" tag="11"/>
-							<popUpButtonItem title="Zwoelf" tag="12"/>
-						</popUpButton>
-						<button title="Einloggen" target="#CPOwner" action="antwortPruefen1:"/>
-					</hbox>
-					<levelIndicator id="level" min="0" max="100" critical="20"/>
-					<hbox> <label selectable="NO"> Anzahl richtiger Antworten: </label><textField width="60" halign="center" valueBinding="#CPOwner.numberCorrect"/>
-					<label selectable="NO"> Anzahl falscher Antworten: </label><textField width="60" halign="center" valueBinding="#CPOwner.numberWrong"/></hbox>
+					<levelIndicator id="level" min="0" max="100" critical="50"/>
+					<hbox>  <label selectable="NO"> Anzahl richtiger Antworten: </label>
+                            <textField editable="NO" width="60" halign="center" valueBinding="#CPOwner.numberCorrect"/>
+					<label selectable="NO"> Anzahl falscher Antworten: </label>
+                            <textField width="60" editable="NO" halign="center" valueBinding="#CPOwner.numberWrong"/></hbox>
 				</vbox>
   </window>
   <window id="schiffefenster" modal="YES" visible="NO" width="500" height="200">
    <flashView visible="NO" width="640" height="400" ressource="ships.swf"/>
   </window>
-  <window modal="YES" visible="NO" id="sheet" width="500" height="200">
+  <window modal="YES" visible="NO" id="sheet" width="700" height="300">
 	<vbox>
 	<hbox>
 		<box title="Du hast gesagt:">
@@ -61,13 +73,12 @@
 				<label id="feedbacklabel" halign="expand"/>
 			</vbox>
 		</box>
-		<image id="tobiimage" halign="expand" valign="expand" ressource="good.png"/>
+		<image id="tobiimage" halign="expand" valign="expand" width="300" height="300" ressource="good.png"/>
 		<box title="Richtig war:">
 			<clockView id="clockview4"/>
 		</box>
 	</hbox>
     <button title="OK, neue Aufgabe" target="#CPOwner" action="closeSheet:"/>
-    <button title="Schiffe" target="#CPOwner" action="schiffeVersenken:"/>
 	</vbox>
  </window>
 </objects>
@@ -80,7 +91,9 @@
 	<outlet source="#CPOwner" target="clockview3" label="clockView3"/>
 	<outlet source="#CPOwner" target="clockview4" label="clockView4"/>
 	<outlet source="#CPOwner" target="feedbacklabel" label="feedbacklabel"/>
-	<outlet source="#CPOwner" target="digitalclocklabel" label="digitalclocklabel"/>
+<outlet source="#CPOwner" target="digitalclocklabel" label="digitalclocklabel"/>
+<outlet source="#CPOwner" target="digitalclocklabel_current" label="digitalclocklabelCurrent"/>
+
 	<outlet source="#CPOwner" target="level" label="levelindicator"/>
 	<outlet source="#CPOwner" target="sheet" label="sheet"/>
 	<outlet source="#CPOwner" target="window" label="window"/>
