@@ -9,7 +9,7 @@
 					<tabViewItem title="Zahlenuhr">
               <vbox>
                 <vspace height="10" valign="min"/>
-				  <textField width="220" selectable="NO" height="50" halign="center" id="digitalclocklabel" valueBinding="clockview1.objectValue"/>
+				  <textField width="220" editable="NO" height="50" halign="center" id="digitalclocklabel" valueBinding="clockview1.objectValue"/>
                   <clockView id="clockview2" halign="center" width="128" height="128" valign="center"/>
                   <hbox> <label>Stunden: </label><slider min="0" max="23" valueBinding="#CPOwner.hours"/></hbox>
                   <hbox> <label>Minuten: </label><slider min="0" max="59" valueBinding="#CPOwner.minutes"/></hbox>
